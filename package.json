@@ -3,7 +3,7 @@
 	"version": "0.0.25",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
-		"deploy:all": "npm run deploy:common && parallelshell \"npm run deploy:lcu-sln-assets\" \"npm run deploy:ent-demo-forge\" \"npm run deploy:lcu-el-assets-domain-view\" \"npm run deploy:lcu-el-assets-domain-input\" \"npm run deploy:lcu-el-assets-config-manager\"",
+		"deploy:all": "npm run deploy:common && parallelshell \"npm run deploy:lcu-sln-assets\" \"npm run deploy:lcu-el-assets-domain-view\" \"npm run deploy:lcu-el-assets-domain-input\" \"npm run deploy:lcu-el-assets-config-manager\" && npm run deploy:ent-demo-forge",
 		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm publish ./dist/common --access public",
 		"deploy:ent-demo-forge": "ng build ent-demo-forge --prod && npm publish ./dist/ent-demo-forge --access public",
 		"deploy:lcu-el-assets-config-manager": "npm version patch --prefix projects/lcu-el-assets-config-manager && ng build lcu-el-assets-config-manager && npm publish ./dist/lcu-el-assets-config-manager --access public",
