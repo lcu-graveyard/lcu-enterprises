@@ -1,0 +1,9 @@
+<mat-form-field class="mat-full-width">
+	<input matInput placeholder="Title" [(ngModel)]="Details.Title" name="title" />
+</mat-form-field>
+
+<mat-form-field>
+	<mat-select placeholder="Data Set Key" [(ngModel)]="Details.DataSetKey" name="dsKey">
+		<mat-option [value]="dsKey" *ngFor="let dsKey of DataSetKeys">{{dsKey}}</mat-option>
+	</mat-select>
+</mat-form-field>

@@ -1,0 +1,12 @@
+<h2>{{Details.Title}}</h2>
+
+<json-schema-form-controls [data]="DomainData" [schema]="DomainSchema" *ngIf="DomainSchema">
+</json-schema-form-controls>
+
+<ng-container *ngIf="Details.DataSetKey && DomainConfig && DomainSchema && !Loading">
+	<button mat-raised-button color="primary" (click)="Save()" *ngIf="Details.DataSetKey">
+		Save Data
+	</button>
+</ng-container>
+
+<mat-spinner *ngIf="Loading"></mat-spinner>

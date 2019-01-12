@@ -1,0 +1,26 @@
+{
+  "DefaultDocPath": "overview.md",
+  "Docs": [
+    {
+      "Children": [],
+      "Path": "overview.md",
+      "Title": "What are Distributed Assets?"
+    },
+    {
+      "Children": [
+        {
+          "Children": [],
+          "Path": "/getting-started/reference-assets.md",
+          "Title": "Distributed Reference Assets"
+        },
+        {
+            "Children": [],
+            "Path": "overview.md",
+            "Title": "Sample"
+        }
+      ],
+      "Title": "Getting Started"
+    }
+  ],
+  "LocationRoot": "https://raw.githubusercontent.com/lowcodeunit/lcu-sln-assets/master/docs/"
+}

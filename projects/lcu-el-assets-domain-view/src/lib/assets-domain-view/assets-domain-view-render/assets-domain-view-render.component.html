@@ -1,0 +1,9 @@
+<h2>{{Details.Title}}</h2>
+
+<ng-container *ngIf="Details.DataSetKey && DomainConfig && Domains && !Loading">
+	<forge-generic-domain-list [items]="Domains" [total]="Domains.length" [columns-to-display]="DomainConfig.ManagementColumnsToDisplay">
+
+	</forge-generic-domain-list>
+</ng-container>
+
+<mat-spinner *ngIf="Loading"></mat-spinner>

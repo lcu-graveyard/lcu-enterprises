@@ -1,0 +1,8 @@
+<h2>{{Details.Title}}</h2>
+
+<json-schema-form-controls [data]="Config" [schema]="ConfigSchema" *ngIf="ConfigSchema">
+</json-schema-form-controls>
+
+<button mat-raised-button color="primary" (click)="Save()" *ngIf="Details.DataSetKey">
+	Save Data
+</button>

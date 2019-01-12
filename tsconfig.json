@@ -1,0 +1,54 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@lcu/enterprises": [
+        "dist/common"
+      ],
+      "@lcu/enterprises/*": [
+        "dist/common/*"
+      ],
+      "@lowcodeunit/lcu-sln-assets": [
+        "dist/lcu-sln-assets"
+      ],
+      "@lowcodeunit/lcu-sln-assets/*": [
+        "dist/lcu-sln-assets/*"
+      ],
+      "@lowcodeunit/lcu-el-assets-domain-view": [
+        "dist/lcu-el-assets-domain-view"
+      ],
+      "@lowcodeunit/lcu-el-assets-domain-view/*": [
+        "dist/lcu-el-assets-domain-view/*"
+      ],
+      "@lowcodeunit/lcu-el-assets-domain-input": [
+        "dist/lcu-el-assets-domain-input"
+      ],
+      "@lowcodeunit/lcu-el-assets-domain-input/*": [
+        "dist/lcu-el-assets-domain-input/*"
+      ],
+      "@lowcodeunit/lcu-el-assets-config-manager": [
+        "dist/lcu-el-assets-config-manager"
+      ],
+      "@lowcodeunit/lcu-el-assets-config-manager/*": [
+        "dist/lcu-el-assets-config-manager/*"
+      ]
+    }
+  }
+}
