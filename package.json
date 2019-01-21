@@ -1,6 +1,6 @@
 {
 	"name": "@lowcodeunit/lcu-enterprises",
-	"version": "0.0.26",
+	"version": "0.0.27",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:common && parallelshell \"npm run deploy:lcu-sln-assets\" \"npm run deploy:lcu-el-assets-domain-view\" \"npm run deploy:lcu-el-assets-domain-input\" \"npm run deploy:lcu-el-assets-config-manager\"",
