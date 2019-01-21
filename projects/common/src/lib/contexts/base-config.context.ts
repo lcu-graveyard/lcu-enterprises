@@ -8,8 +8,6 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 	//	Fields
 	protected error: BehaviorSubject<any>;
 
-	protected loading: BehaviorSubject<boolean>;
-
 	protected winAny: any;
 
 	//	Properties
@@ -33,8 +31,6 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 
 	public Error: Observable<any>;
 
-	public Loading: Observable<boolean>;
-
 	//	Constructors
 	constructor(protected configSvc: SingletonService, blockLoad?: boolean) {
 		super();
@@ -42,10 +38,6 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 		this.error = new BehaviorSubject(null);
 
 		this.Error = this.error.asObservable();
-
-		this.loading = new BehaviorSubject(false);
-
-		this.Loading = this.loading.asObservable();
 
 		this.winAny = window;
 
@@ -56,7 +48,7 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 	//	API Methods
 	public Load(): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.error.next(null);
 
@@ -82,7 +74,7 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 					obs.next(<Status>{ Code: 1, Message: err });
 				},
 				() => {
-					this.loading.next(false);
+					this.loading(false);
 
 					obs.complete();
 				});
@@ -91,7 +83,7 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 
 	public Save(config: T): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.error.next(null);
 
@@ -100,7 +92,7 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 					if (isResultSuccess(result)) {
 						this.Load().subscribe();
 					} else {
-						this.error.next(result.Status);                     
+						this.error.next(result.Status);
 					}
 
 					obs.next(result.Status);
@@ -111,7 +103,7 @@ export abstract class BaseConfigContext<T> extends ObservableContextService<T> {
 					obs.next(<Status>{ Code: 1, Message: err });
 				},
                 () => {
-                    this.loading.next(false);
+                    this.loading(false);
 
 					obs.complete();
 				});
