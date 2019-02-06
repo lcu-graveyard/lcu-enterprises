@@ -44,7 +44,7 @@
 		"@lcu/routing": "^0.1.12",
 		"@lcu/solutions": "^0.1.12",
 		"@lowcodeunit-devkit/ng-lcu": "0.0.124",
-		"@lowcodeunit/json-schema-editor": "0.0.5",
+		"@lowcodeunit/json-schema-editor": "0.0.10",
 		"@lowcodeunit/ngx-markdown-docs": "0.0.25",
 		"angular-font-awesome": "^3.1.2",
 		"angular6-json-schema-form": "^7.0.2",

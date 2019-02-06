@@ -1,5 +1,18 @@
 import { NgModule } from '@angular/core';
-import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatToolbarModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatToolbarModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DndModule } from '@beyerleinf/ngx-dnd';
 import { MaterialDesignFrameworkModule } from 'angular6-json-schema-form';
@@ -18,69 +31,62 @@ import { ForgeAssetsSolutionManageDataDialog } from './dialogs/asset-manage/asse
 import { ForgeAssetsSolutionSettingsDialog } from './dialogs/assets-settings/assets-settings.dialog';
 
 export class ForgeAssetsSolutionDisplayModule extends BaseSolutionModule {
-	public Documentation() {
-		return ForgeAssetsSolutionDocumentation;
-	}
+  public Documentation() {
+    return ForgeAssetsSolutionDocumentation;
+  }
 
-	public Heading() {
-		return ForgeAssetsSolutionHeading;
-	}
+  public Heading() {
+    return ForgeAssetsSolutionHeading;
+  }
 
-	public Manage() {
-		return ForgeAssetsSolutionManage;
-	}
+  public Manage() {
+    return ForgeAssetsSolutionManage;
+  }
 
-	public Marketplace() {
-		return ForgeAssetsSolutionMarketplace;
-	}
+  public Marketplace() {
+    return ForgeAssetsSolutionMarketplace;
+  }
 
-	public Overview() {
-		return ForgeAssetsSolutionOverview;
-	}
+  public Overview() {
+    return ForgeAssetsSolutionOverview;
+  }
 }
 
-var comps = [
-	ForgeAssetsSolutionDocumentation,
-	ForgeAssetsSolutionHeading,
-	ForgeAssetsSolutionManage,
-	ForgeAssetsSolutionMarketplace,
-	ForgeAssetsSolutionOverview,
-	ForgeAssetsSolutionCreateDialog,
-	ForgeAssetsSolutionManageDataDialog,
-	ForgeAssetsSolutionSettingsDialog,
+const comps = [
+  ForgeAssetsSolutionDocumentation,
+  ForgeAssetsSolutionHeading,
+  ForgeAssetsSolutionManage,
+  ForgeAssetsSolutionMarketplace,
+  ForgeAssetsSolutionOverview,
+  ForgeAssetsSolutionCreateDialog,
+  ForgeAssetsSolutionManageDataDialog,
+  ForgeAssetsSolutionSettingsDialog
 ];
 
 @NgModule({
-	imports: [
-		FathymSharedModule,
-		NgxMarkdownDocsModule,
-		GenericDomainModule,
-		FlexLayoutModule,
-		JsonSchemaEditorModule,
-		DndModule,
-		MaterialDesignFrameworkModule,
-		MatAutocompleteModule,
-		MatButtonModule,
-		MatCheckboxModule,
-		MatDialogModule,
-		MatFormFieldModule,
-		MatIconModule,
-		MatInputModule,
-		MatListModule,
-		MatProgressSpinnerModule,
-		MatSelectModule,
-		MatSlideToggleModule,
-		MatToolbarModule,
-	],
-	declarations: [
-		...comps,
-	],
-	exports: [
-		...comps,
-	],
-	entryComponents: [
-		...comps,
-	]
+  imports: [
+    FathymSharedModule,
+    NgxMarkdownDocsModule,
+    GenericDomainModule,
+    FlexLayoutModule,
+    JsonSchemaEditorModule,
+    DndModule,
+    MaterialDesignFrameworkModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatToolbarModule
+  ],
+  declarations: [...comps],
+  exports: [...comps],
+  entryComponents: [...comps]
 })
-export class ForgeAssetsSolutionModule {
-}
+export class ForgeAssetsSolutionModule {}
