@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { ISolutionControl, ForgeGenericSolution } from '@lcu/solutions';
 import { isResultSuccess, BaseModeledResponse, Loading } from '@lcu/core';
 import { ForgeAssetsSolutionSettingsDialog } from '../dialogs/assets-settings/assets-settings.dialog';
@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./assets-manage.component.scss']
 })
 export class ForgeAssetsSolutionManage extends ForgeGenericSolution
-    implements ISolutionControl {
+    implements ISolutionControl, OnInit, OnDestroy {
     //  Fields
     protected assetTypeConfig: AssetTypeContext;
 
@@ -44,7 +44,7 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
         this.Loading = new Loading();
     }
 
-    //	Life Cycle
+    // 	Life Cycle
     public ngOnInit() {
         super.ngOnInit();
 
@@ -58,16 +58,18 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
     }
 
     public ngOnDestroy() {
-        if (this.assetTypeSub)
+        if (this.assetTypeSub) {
             this.assetTypeSub.unsubscribe();
+        }
 
-        if (this.dataSub)
+        if (this.dataSub) {
             this.dataSub.unsubscribe();
+        }
     }
 
-    //	API Methods
+    // 	API Methods
     public CreateData() {
-        if (this.AssetTypeConfig)
+        if (this.AssetTypeConfig) {
             this.pgUiSvc.Dialog.Open(ForgeAssetsSolutionManageDataDialog, <ForgeAssetsSolutionManageDataDialogConfig>{
                 AssetTypeConfig: this.AssetTypeConfig,
                 Data: {}
@@ -77,14 +79,15 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
 
                     this.Flow.Sync().subscribe();
                 }
-            }, "90%");
+            }, '90%');
+        }
     }
 
     public CreateNewDataType() {
         this.pgUiSvc.Dialog.Open(ForgeAssetsSolutionCreateDialog, {},
             (result) => {
                 if (isResultSuccess(result) && this.AssetsConfig.DataTypes) {
-                    if (!this.AssetsConfig.DataTypes.some(dt => dt == result.Model)) {
+                    if (!this.AssetsConfig.DataTypes.some(dt => dt === result.Model)) {
                         this.AssetsConfig.DataTypes.push(result.Model);
 
                         this.assetsConfig.Save(this.AssetsConfig).subscribe(status => {
@@ -106,7 +109,7 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
     }
 
     public EditData(data: any) {
-        if (this.AssetTypeConfig)
+        if (this.AssetTypeConfig) {
             this.pgUiSvc.Dialog.Open(ForgeAssetsSolutionManageDataDialog, <ForgeAssetsSolutionManageDataDialogConfig>{
                 AssetTypeConfig: this.AssetTypeConfig,
                 Data: data
@@ -116,11 +119,12 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
 
                     this.Flow.Sync().subscribe();
                 }
-            }, "90%");
+            }, '90%');
+        }
     }
 
     public ManageData(type: string) {
-        if (type && this.ManageDataType != type) {
+        if (type && this.ManageDataType !== type) {
             this.ManageDataType = type;
 
             this.Flow = new DataFlowContext({
@@ -160,7 +164,7 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
     }
 
     public ManageDataTypeSettings(type: string) {
-        if (this.AssetTypeConfig)
+        if (this.AssetTypeConfig) {
             this.pgUiSvc.Dialog.Open(ForgeAssetsSolutionSettingsDialog, this.AssetTypeConfig || {},
                 (result) => {
                     if (isResultSuccess(result)) {
@@ -168,8 +172,9 @@ export class ForgeAssetsSolutionManage extends ForgeGenericSolution
 
                         this.assetTypeConfig.Save(this.AssetTypeConfig).subscribe();
                     }
-                }, "90%");
+                }, '90%');
+        }
     }
 
-    //	Helpers
-}   
+    // 	Helpers
+}
