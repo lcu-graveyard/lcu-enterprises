@@ -26,7 +26,11 @@ export class ForgeAssetsSolutionManageDataDialog implements OnInit {
   public SchemaMap: JSONSchemaMap;
 
   // 	Constructors
-  constructor(protected dialogRef: MatDialogRef<ForgeAssetsSolutionManageDataDialog>, @Inject(MAT_DIALOG_DATA) config: ForgeAssetsSolutionManageDataDialogConfig, protected schemaSvc: ForgeJSONSchemaService) {
+  constructor(
+    protected dialogRef: MatDialogRef<ForgeAssetsSolutionManageDataDialog>,
+    @Inject(MAT_DIALOG_DATA) config: ForgeAssetsSolutionManageDataDialogConfig,
+    protected schemaSvc: ForgeJSONSchemaService
+  ) {
     this.Config = JSON.parse(JSON.stringify(config));
 
     this.Data = {};
@@ -61,7 +65,11 @@ export class ForgeAssetsSolutionManageDataDialog implements OnInit {
   }
 
   public Save(propData: any) {
+    console.log(propData);
+
     const data = this.wrapProperties(propData);
+
+    console.log(data);
 
     this.dialogRef.close(<BaseModeledResponse<ForgeAssetsSolutionManageDataDialogResult>>{
       Model: { Data: data },
@@ -84,6 +92,7 @@ export class ForgeAssetsSolutionManageDataDialog implements OnInit {
             this.SchemaMap = <JSONSchemaMap>{
               Schema: <ForgeJSONSchema>{}
             };
+            console.log(this.SchemaMap);
           } else {
             console.log(schemaResult);
 
@@ -122,6 +131,8 @@ export class ForgeAssetsSolutionManageDataDialog implements OnInit {
 
   protected wrapProperties(propData: any) {
     const props = this.PivotProperties();
+
+    console.log(props);
 
     const data = {};
 
